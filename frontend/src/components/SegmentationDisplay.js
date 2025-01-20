@@ -1,17 +1,25 @@
 import React from "react";
 
-const SegmentationDisplay = () => {
-
+const SegmentationDisplay = ({ segments }) => {
   return (
     <div style={styles.container}>
       <h3 style={styles.title}>Segmented Video Topics</h3>
-      {dummySegments.length === 0 ? (
-        <p style={styles.emptyMessage}>No segments available. Please process the video.</p>
+      {segments.length === 0 ? (
+        <p style={styles.emptyMessage}>
+          No segments available. Please process the video.
+        </p>
       ) : (
-        dummySegments.map((segment, index) => (
+        segments.map((segment, index) => (
           <div key={index} style={styles.card}>
-            <p style={styles.timestamp}><strong>Timestamp:</strong> {segment.timestamp}</p>
-            <p style={styles.content}><strong>Content:</strong> {segment.content}</p>
+            <p style={styles.timestamp}>
+              <strong>Timestamp:</strong> {segment.timestamp}
+            </p>
+            <p style={styles.topic}>
+              <strong>Topic:</strong> {segment.topic}
+            </p>
+            <p style={styles.content}>
+              <strong>Content:</strong> {segment.content}
+            </p>
           </div>
         ))
       )}
@@ -25,6 +33,8 @@ const styles = {
     backgroundColor: "#2c2c2c",
     color: "#ffffff",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    height: "100%",
+    overflowY: "auto", 
   },
   title: {
     fontSize: "24px",
@@ -50,6 +60,12 @@ const styles = {
     fontSize: "16px",
     color: "#cccccc",
     marginBottom: "8px",
+  },
+  topic: {
+    fontSize: "16px",
+    color: "#ffffff",
+    marginBottom: "8px",
+    fontWeight: "bold",
   },
   content: {
     fontSize: "16px",
