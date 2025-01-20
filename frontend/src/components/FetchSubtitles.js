@@ -97,6 +97,7 @@ const FetchSubtitles = ({ onFetchSubtitles, onSegmentation }) => {
 const styles = {
   container: {
     padding: "20px",
+    overflow: "hidden",
     backgroundColor: "#2c2c2c",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
     color: "#ffffff",
@@ -122,7 +123,7 @@ const styles = {
   },
   buttonPrimary: {
     padding: "10px 20px",
-    backgroundColor: "#0066cc",
+    backgroundColor: "#316192FF",
     color: "white",
     border: "none",
     borderRadius: "4px",
@@ -131,7 +132,7 @@ const styles = {
   },
   buttonSecondary: {
     padding: "10px 20px",
-    backgroundColor: "#28a745",
+    backgroundColor: "#1EC108FF",
     color: "white",
     border: "none",
     borderRadius: "4px",

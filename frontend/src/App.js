@@ -15,19 +15,46 @@ const App = () => {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      <div style={{ flex: 1, borderRight: "1px solid #ccc", overflowY: "auto" }}>
+    <div style={styles.appContainer}>
+      <div style={styles.leftPanel}>
         <FetchSubtitles
           onFetchSubtitles={handleFetchSubtitles}
           onSegmentation={handleSegmentation}
         />
       </div>
-
-      <div style={{ flex: 1, overflowY: "auto" }}>
+      <div style={styles.rightPanel}>
         <SegmentationDisplay segments={segments} />
       </div>
     </div>
   );
 };
+
+const styles = {
+  appContainer: {
+    display: "flex",
+    height: "100vh",
+  },
+  leftPanel: {
+    flex: 1,
+    borderRight: "1px solid #ccc",
+    overflowY: "scroll",
+    scrollbarWidth: "none", 
+    msOverflowStyle: "none",
+  },
+  rightPanel: {
+    flex: 1,
+    overflowY: "scroll",
+    scrollbarWidth: "none", 
+    msOverflowStyle: "none", 
+  },
+};
+
+const globalStyle = document.createElement("style");
+globalStyle.innerHTML = `
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+document.head.appendChild(globalStyle);
 
 export default App;

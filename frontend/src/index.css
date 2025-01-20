@@ -1,7 +1,9 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #2c2c2c;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #222;
 }
 
 h3 {
@@ -26,31 +28,22 @@ ul {
   padding: 0;
 }
 
-/* Modern ve ince scrollbar tasarımı */
-
-/* Tüm sayfa için scrollbar */
-body {
-  scrollbar-width: thin; /* Firefox için ince scrollbar */
-  scrollbar-color: #555 #222; /* Scrollbar ve arka plan renkleri */
-}
-
-/* Webkit (Chrome, Edge, Safari) için scrollbar */
 body::-webkit-scrollbar {
-  width: 6px; /* Scrollbar genişliği */
-  height: 6px; /* Yatay scrollbar için yükseklik */
+  width: 6px;
+  height: 6px;
 }
 
 body::-webkit-scrollbar-track {
-  background: #222; /* Arka plan rengi */
-  border-radius: 10px; /* Yuvarlatılmış köşeler */
+  background: #222; 
+  border-radius: 10px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #555; /* Scrollbar rengi */
-  border-radius: 10px; /* Yuvarlatılmış köşeler */
-  transition: background 0.3s; /* Hover sırasında geçiş efekti */
+  background: #555;
+  border-radius: 10px;
+  transition: background 0.3s; 
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background: #888; /* Hover sırasında daha belirgin renk */
+  background: #888; 
 }
