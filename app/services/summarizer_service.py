@@ -1,8 +1,7 @@
 import requests
 import os
 
-
-def summarize_text(text):
+def send_to_chatgpt(prompt):
     api_key = os.getenv("CHATGPT_API_KEY")
     
     headers = {
@@ -12,7 +11,7 @@ def summarize_text(text):
     
     payload = {
         "model": "gpt-4",
-        "messages":[{"role":"user", "content":f"Summarize this: {text}"}]
+        "messages": [{"role": "user", "content": prompt}]
     }
     
     response = requests.post("https://api.openai.com/v1/chat/completions", json=payload, headers=headers)
@@ -20,4 +19,4 @@ def summarize_text(text):
     if response.status_code == 200:
         return response.json().get("choices")[0]["message"]["content"]
     
-    return "Failed to summarize text"
+    return "Failed to process request"

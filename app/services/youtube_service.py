@@ -16,3 +16,5 @@ def fetch_youtube_subtitles(video_url):
         print(f"Error fetching subtitles {e}")
         
         return None
+    
+    
