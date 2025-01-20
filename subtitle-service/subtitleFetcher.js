@@ -4,9 +4,6 @@ import scraper from "youtube-captions-scraper";
 const app = express();
 app.use(express.json());
 
-/**
- * Extract subtitles using youtube-captions-scraper
- */
 const fetchSubtitles = async (videoId, lang) => {
   try {
     const captions = await scraper.getSubtitles({
@@ -38,7 +35,6 @@ app.post("/fetchSubtitles", async (req, res) => {
     return res.status(400).json({ error: "Video URL is required" });
   }
 
-  // Extract video ID from YouTube URL
   const videoId = new URL(videoUrl).searchParams.get("v");
   if (!videoId) {
     return res.status(400).json({ error: "Invalid YouTube URL." });

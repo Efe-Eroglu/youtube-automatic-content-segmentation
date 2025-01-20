@@ -1,5 +1,7 @@
 from flask import Blueprint, request, jsonify
 import requests
+import json
+from app.services.summarizer_service import send_to_chatgpt
 
 youtube_bp = Blueprint("youtube", __name__)
 
@@ -28,3 +30,28 @@ def fetch_subtitles():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@youtube_bp.route("/process_subtitles", methods=["POST"])
+def process_subtitles():
+    data = request.json
+    subtitles = data.get("subtitles")
+    
+    if not subtitles:
+        return jsonify({"error":"Subtitles are required"}),400
+    
+    try:
+        json_content = json.dumps(subtitles, index = 4, ensure_ascii = False)
+        
+        prompt = (
+            "The following is a JSON containing subtitles of a Youtube video:\\n"
+            f"{json_content}\n\n"
+            "Please analyze this video content and automatically segment it into meaningful sections with timestamps."
+        )
+        
+        response = send_to_chatgpt()    
+
+        return jsonify({"segments":response})
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}),500
